@@ -1,0 +1,155 @@
+@import url(fontawesome-free-6.7.2-web/fontawesome-free-6.7.2-web/css/all.css);
+@import url(fontawesome-free-6.7.2-web/fontawesome-free-6.7.2-web/css/all.min.css);
+
+@font-face {
+    font-family:'apple' ;
+    src: url(apple_garamond/AppleGaramond-Bold.ttf);
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222327;
+    margin: 0;
+    font-family: 'apple',sans-serif;
+}
+
+.icon, .text{
+    color: #222327;
+}
+.navegação{
+    position: relative;
+    width: 400px;
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+   
+
+}
+
+ul{
+    display: flex;
+    width: 350px;
+    padding: 0;
+}
+li{
+    position: relative;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;
+}
+li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+    text-decoration: none;
+    color: #222327;
+}
+
+.icon {
+    font-size: 1.5em;
+    transition: 0.5s;
+}
+
+a .icon{
+    position: relative;
+    display: block;
+    line-height: 46px;
+    font-size: 1.5em;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.text {
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(0);
+    transition: 0.5s;
+
+}
+
+li.active .icon {
+    transform: translateY(-10px); /* 🔥 Faz o ícone subir ao ser ativado */
+    transition: 0.5s;
+}
+    
+
+li.active a .icon{
+    transform: translateY(-35px);
+}
+
+a .text{
+    position: absolute;
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+li.active .text {
+    opacity: 1; /* 🔹 Quando o item for ativo, o texto fica totalmente visível */
+    transform: translateY(0);
+    }
+
+li.active a .text{
+    opacity: 1;
+    transform: translateY(10px);
+}
+
+.indicator {
+    position: absolute;
+    bottom: 0;
+    top: -50%;
+    width: 70px;
+    height: 70px;
+    background: tomato;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 6px solid #222327;
+    transition: 0.5s ease-in-out;
+
+}
+
+.indicator::before,
+.indicator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+}
+
+.indicator::before{
+    left: -22px;
+    border-top-right-radius: 20px;
+    box-shadow: 1px -10px 0 0 #222327;
+}
+
+.indicator::after{
+    right: -22px;
+    border-top-left-radius: 20px;
+    box-shadow: -1px -10px 0 0 #222327;
+}
+
+li.active~.indicator{
+--x: 0;
+transform: translateY(var(--x));
+}
+
+li:nth-child(2).active~.indicator{--x: 70px; }
+li:nth-child(3).active~.indicator{--x: 140px; }
+li:nth-child(4).active~.indicator{--x: 210px; }
+li:nth-child(5).active~.indicator{--x: 280px; }
